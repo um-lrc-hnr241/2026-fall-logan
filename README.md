@@ -19,3 +19,17 @@ Changes to this template only affect repos generated afterward.
 Journals are written in `journals/<name>.md` and built into each member page
 with `python3 tools/build_journals.py`. See `journals/README.md` for the steps
 and format.
+
+## The Maze design (Oct 2026)
+
+The site is built as a maze: each ring is a build (Build 1 outside, Build 8 at
+the center), in the "Lamplight" palette.
+
+- `rings.js` — the ring list. When a build is posted, set its `status` to
+  `"reached"` (others: `"near"`, `"locked"`) and give it a `link`. The maze
+  panel and the "Rings not yet reached" tiles update from this one list.
+- `team.html` — "The Rings": team builds (Build 2, Build 6) and the
+  Cornerstone bibliography.
+- `<name>.html` — each member's Path: intro, builds, and Reveries (journals,
+  built from `journals/<name>.md`).
+- Text in `[square brackets]` is a placeholder for the team to write.

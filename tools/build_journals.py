@@ -79,21 +79,29 @@ def parse(source):
 
 
 def render(entries):
-    out = [f'{INDENT}<ol class="journal-list">']
-    for e in entries:
-        out.append(f'{INDENT}  <li class="journal-entry">')
-        out.append(f"{INDENT}    <h3>{inline(e['title'])}</h3>")
+    """Each entry is a Reverie: a stop on the member's trail, alternating sides."""
+    if not entries:
+        return f'{INDENT}<p class="trail-empty">The first Reverie is on its way.</p>'
+    out = [f'{INDENT}<ol class="journal-list revs">']
+    for i, e in enumerate(entries):
+        side = "l" if i % 2 == 0 else "r"
+        out.append(f'{INDENT}  <li class="journal-entry rev {side}">')
+        out.append(f'{INDENT}    <span class="node" aria-hidden="true"></span>')
+        out.append(f"{INDENT}    <article>")
+        out.append(f'{INDENT}      <span class="no">Reverie {i + 1:02d}</span>')
+        out.append(f"{INDENT}      <h3>{inline(e['title'])}</h3>")
         if e["status"]:
-            out.append(f'{INDENT}    <p class="journal-status">{inline(e["status"])}</p>')
+            out.append(f'{INDENT}      <p class="journal-status">{inline(e["status"])}</p>')
         for kind, body in e["blocks"]:
             if kind == "p":
-                out.append(f"{INDENT}    <p>{inline(body)}</p>")
+                out.append(f"{INDENT}      <p>{inline(body)}</p>")
             elif kind == "quote":
-                out.append(f'{INDENT}    <blockquote class="pull-quote">{inline(body)}</blockquote>')
+                out.append(f"{INDENT}      <blockquote>{inline(body)}</blockquote>")
             else:
-                out.append(f"{INDENT}    <ul>")
-                out.extend(f"{INDENT}      <li>{inline(item)}</li>" for item in body)
-                out.append(f"{INDENT}    </ul>")
+                out.append(f"{INDENT}      <ul>")
+                out.extend(f"{INDENT}        <li>{inline(item)}</li>" for item in body)
+                out.append(f"{INDENT}      </ul>")
+        out.append(f"{INDENT}    </article>")
         out.append(f"{INDENT}  </li>")
     out.append(f"{INDENT}</ol>")
     return "\n".join(out)
