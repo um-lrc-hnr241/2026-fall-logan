@@ -405,3 +405,48 @@ h2 {
   font-size: 0.85rem;
   font-weight: 700;
 }
+
+/* Artwork and Build 2 */
+img.hero-art {
+  display: block;
+  width: calc(100% + 2.5rem);
+  max-width: none;
+  min-height: 0;
+  height: auto;
+  object-fit: cover;
+}
+
+.illustration {
+  margin: 0;
+  text-align: center;
+}
+
+.illustration img {
+  width: 20rem;
+  border: 1px solid var(--border);
+  border-radius: 0.35rem;
+}
+
+.bibliography {
+  margin-top: 1.5rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: 0.35rem;
+  background: var(--surface);
+}
+
+.bibliography summary {
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.bibliography ul {
+  padding-left: 1.25rem;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 42rem) {
+  img.hero-art {
+    width: calc(100% + 2rem);
+  }
+}
