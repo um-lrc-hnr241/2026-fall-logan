@@ -13,3 +13,9 @@ Pages for it; the site-builder agent then edits the files in response to
   the empty folders.)
 
 Changes to this template only affect repos generated afterward.
+
+## Member journals
+
+Journals are written in `journals/<name>.md` and built into each member page
+with `python3 tools/build_journals.py`. See `journals/README.md` for the steps
+and format.

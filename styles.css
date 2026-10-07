@@ -380,3 +380,28 @@ h2 {
     font-weight: 700;
   }
 }
+
+/* Journal entries (built by tools/build_journals.py) */
+.journal-entry p:last-child,
+.journal-entry ul:last-child {
+  margin-bottom: 0;
+}
+
+.journal-entry ul {
+  padding-left: 1.25rem;
+}
+
+.journal-entry .pull-quote {
+  margin: 1rem 0 0;
+}
+
+.journal-status {
+  display: inline-block;
+  margin: 0 0 0.75rem;
+  padding: 0.1rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
