@@ -422,7 +422,9 @@ img.hero-art {
 }
 
 .illustration img {
+  display: block;
   width: 20rem;
+  margin: 0 auto;
   border: 1px solid var(--border);
   border-radius: 0.35rem;
 }
